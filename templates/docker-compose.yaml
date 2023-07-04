@@ -8,9 +8,10 @@ services:
         target: /dgraph
         volume:
           nocopy: true
-    ports:
-      - '${zeroPort}:${zeroPort}'
-      - '6080:6080'
+    network_mode: host
+    # ports:
+    #   - '${zeroPort}:${zeroPort}'
+    #   - '6080:6080'
     restart: on-failure
     command: 'dgraph zero --bindall=$bindall --my=${addrHost}:${zeroPort}'
   alpha:
@@ -24,23 +25,25 @@ services:
         target: /dgraph
         volume:
           nocopy: true
-    ports:
-      - 8080:8080
-      - 7080:7080
-      - 9080:9080
+    network_mode: host
+    # ports:
+    #   - 8080:8080
+    #   - 7080:7080
+    #   - 9080:9080
     tty: true
     restart: on-failure
     command: 'bash ./service/bulk-it-or-not-bulk-it.sh'
   ratel:
-    image: 'dgraph/dgraph:${dgraphVersion}'
+    image: 'dgraph/ratel:latest'
     volumes:
       - type: volume
         source: dgraph
         target: /dgraph
         volume:
           nocopy: true
-    ports:
-      - 8000:8000
+    network_mode: host
+    # ports:
+    #   - 8000:8000
     command: dgraph-ratel
 volumes:
   dgraph:

@@ -55,7 +55,7 @@ start_to_cook () {
 
     questione_Host () {
     while true; do
-    read -p "Do you wish to change host addr? (it's important) " yn
+    read -p "Do you wish to change host addr? (it's important) [y/n]: " yn
     case $yn in
         [Yy]* ) return 0; break;;
         [Nn]* ) checkDFHost; return 1; break;;
@@ -80,7 +80,7 @@ cook_version () {
      if [ !$dgraphVersion ];
      then
      echo 'Theres no default version'
-     dgraphVersion='v20.03.2'
+     dgraphVersion='latest'
      echo "Defining ${dgraphVersion} as default version"
      else
      echo "ure using ${dgraphVersion} version"
@@ -89,7 +89,7 @@ cook_version () {
 
     questione_Version () {
     while true; do
-    read -p "Do you wish to change the Dgraph Version? " yn
+    read -p "Do you wish to change the Dgraph Version? [y/n]: " yn
     case $yn in
             [Yy]* ) return 0; break;;
             [Nn]* ) checkDF; return 1; break;;
@@ -122,7 +122,7 @@ cook_Bind () {
      } 
     questione_TheBind () {
     while true; do
-    read -p "Do you wish to change the bindall default? " yn
+    read -p "Do you wish to change the bindall default? [y/n]: " yn
     case $yn in
         [Yy]* ) return 0; break;;
         [Nn]* ) checkDFBind; return 1; break;;
@@ -158,7 +158,7 @@ cook_Storage () {
      } 
     questione_The_StorageType () {
     while true; do
-    read -p "Do you wish to change the Storage type? " yn
+    read -p "Do you wish to change the Storage type? [y/n]: " yn
     case $yn in
         [Yy]* ) return 0; break;;
         [Nn]* ) checkDFST; return 1; break;;
@@ -207,7 +207,7 @@ cook_Memory () {
      } 
     questione_Memory () {
     while true; do
-    read -p "Do you wanna increase the memory? " yn
+    read -p "Do you wanna increase the memory? [y/n]: " yn
     case $yn in
         [Yy]* ) return 0; break;;
         [Nn]* ) checkDFMemo; return 1; break;;
@@ -257,7 +257,7 @@ done
 
 questione_it () {
     while true; do
-    read -p "Do you wish to create a new process? will override the old files " yn
+    read -p "Do you wish to create a new process? will override the old files [y/n]: " yn
     case $yn in
         [Yy]* ) return 0; break;;
         [Nn]* ) exit;;
@@ -269,7 +269,7 @@ done
 
  generate_docker_compose () {
   echo "#### Creating docker-compose ..."
-  render_template ./templates/docker-compose.yaml > ./service/docker-compose.yml
+  render_template ./templates/docker-compose.yaml > ./docker-compose.yml
 }
 
  generate_bulk_script () {
