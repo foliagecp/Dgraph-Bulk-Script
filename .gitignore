@@ -9,3 +9,5 @@ ehthumbs.db
 Thumbs.db
 .cache
 tmp/*
+service/*.rdf.gz
+docker-compose.yaml
