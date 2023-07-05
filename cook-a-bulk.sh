@@ -219,6 +219,9 @@ cook_Memory () {
 }
 
 questione_it_type () {
+    if [[ "$1" ]]; then
+        return "$1"
+    fi
     Option1="- Cook a Docker-compose"
     Option2="- Cook a kubernetes yaml"
 
@@ -250,7 +253,7 @@ questione_it () {
     read -p "Do you wish to create a new process? will override the old files [y/n]: " yn
     case $yn in
         [Yy]* ) return 0; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) return 1; break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
@@ -328,22 +331,23 @@ warning() {
 }
 
 
-if questione_it_type; then
+if questione_it_type "$1"; then
     set_vars_docker
-    questione_it
-    start_to_cook
-    cook_version
-    cook_Bind
-    cook_Memory
-    echo "
-    new Dgraph Version ${dgraphVersion}
-    new Addr Host ${addrHost}
-    new Bindall ${bindall}
-    New Zero Port ${zeroPort}
-    New Memory value ${my_alpha_memory}"
-    generate_docker_compose
-    generate_bulk_script
-    echo "#### Everything done! go compose it up!"
+    if questione_it; then
+        start_to_cook
+        cook_version
+        cook_Bind
+        cook_Memory
+        echo "
+        new Dgraph Version ${dgraphVersion}
+        new Addr Host ${addrHost}
+        new Bindall ${bindall}
+        New Zero Port ${zeroPort}
+        New Memory value ${my_alpha_memory}"
+        generate_docker_compose
+        generate_bulk_script
+        echo "#### Everything done! go compose it up!"
+    fi
 else
     if questione_it; then
         set_vars_k8s

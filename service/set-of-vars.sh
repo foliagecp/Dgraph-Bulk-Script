@@ -9,4 +9,4 @@ bindall=true
 zeroPort=5080
 
 #alpha Configs
-my_alpha_memory=2048
+my_alpha_memory=8192

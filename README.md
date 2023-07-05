@@ -2,6 +2,14 @@
 
 > It is mandatory to use "cook-a-bulk.sh". Cuz it will download the latest dataset.
 
+## Docker Compose
+
+To use Docker Compose simply you need to execute `up.sh`.
+
+```bash
+> ./up.sh
+```
+
 ## Todo
 
 - [x] Basic bulk operations.
@@ -16,7 +24,7 @@ Well, the script is simple and will do everything for you if you copy this repo 
 
 There is not much secret in this script. If you need to copy feel free to create a flow for your project.
 
-Attention! Before using modify the vars using 
+Attention! Before using modify the vars using
 
 ````
 > bash ./cook-a-bulk.sh
@@ -34,7 +42,7 @@ dgraphVersion=v20.03.2
 
 OBS: This PJ was made on MacOS (Darwin), to work on other systems few things need to be modified. For example, Docker-compose may work differently on Windows as the volume paths.
 
-## commands "copy paste":
+## commands "copy paste"
 
 Under this repo you have to use docker compose
 
@@ -42,7 +50,7 @@ Under this repo you have to use docker compose
 
 or
 
-```docker-compose up ```
+```docker-compose up```
 To see Logs
 
 After the Bulk go to Ratel:
@@ -76,7 +84,6 @@ Right after the bulkload and then the Alpha is UP. Query in Ratel for this:
 
 Should appears 10 nodes and 10 edges.
 
-
 # Others tips
 
 if you need to download the RDF and use in some kind of test out (with this repo, don't need tho)
@@ -85,11 +92,9 @@ if you need to download the RDF and use in some kind of test out (with this repo
 
 if you need to use vim create those files before
 
-````touch docker-compose.yml && touch release.schema ````
-
+````touch docker-compose.yml && touch release.schema````
 
 in ".schema" just paste your schema or the 1million example.
-
 
 ### Cleanup Docker
 
@@ -105,11 +110,12 @@ docker volume rm dgraphbulkscript_dgraph
 docker volume rm ${name_of_yourCOmpose}
 ````
 
-## Anything about Dgraph go to 
-https://docs.dgraph.io/
+## Anything about Dgraph go to
 
-## Te get in touch to our community go to 
-https://discuss.dgraph.io/
+<https://docs.dgraph.io/>
 
+## Te get in touch to our community go to
+
+<https://discuss.dgraph.io/>
 
 > # PS. the docker-compose is set to use Dgraph v20.03.2
